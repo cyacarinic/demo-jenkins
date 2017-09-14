@@ -1,0 +1,5 @@
+#!/bin/sh
+# Should be placed at .git/hooks/post-commit
+curl --user cyacarini:b84c35a9a80a1a650c27304eac085081 http://localhost:8080/job/demo/build?token=yacarini1989
+
+echo "[Post commit]"

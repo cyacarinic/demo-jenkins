@@ -1,0 +1,16 @@
+---
+- name: Server installation for MultiSite system
+  hosts: all
+  user: vagrant
+  become: True
+
+  vars:
+    base_dir: /usr/local/opt
+    project_dir: ${base_dir}/surquillo/
+    project_name: jenkins
+  roles:
+     - jenkins
+     - git
+     - docker
+     - docker-compose
+    - facts

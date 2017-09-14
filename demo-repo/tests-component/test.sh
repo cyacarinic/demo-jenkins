@@ -1,0 +1,2 @@
+echo "corriendo tests..."
+whoami

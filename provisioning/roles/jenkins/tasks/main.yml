@@ -1,0 +1,27 @@
+---
+- name: Installing Java
+  yum: name=java state=present
+
+- name: Obtain Jenkins Repo
+  get_url: url=http://pkg.jenkins-ci.org/redhat/jenkins.repo dest=/etc/yum.repos.d/jenkins.repo
+
+- name: Obtain Jenkins key
+  rpm_key:
+    state: present
+    key: https://jenkins-ci.org/redhat/jenkins-ci.org.key
+
+- name: Installing Jenkins
+  yum:
+    name: jenkins
+    state: present
+
+- name: Enable service jenkins
+  systemd:
+    name: jenkins
+    enabled: yes
+
+- name: Start service jenkins, if not running
+  service:
+    name: jenkins
+    state: started
+    enabled: yes

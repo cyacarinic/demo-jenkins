@@ -1,0 +1,26 @@
+---
+- name: install the docker rpm from a remote repo
+  shell: curl -fsSL https://get.docker.com/ | sh
+
+- name: enable service docker
+  systemd:
+    name: docker
+    enabled: yes
+
+- name: Start service docker, if not running
+  service:
+    name: docker
+    state: started
+    enabled: yes
+
+# - name: Create docker group
+#   command: groupadd docker
+#   become: true
+
+# - name: Add vagrant to docker group
+#   command: gpasswd -a $USER docker && newgrp docker
+#   become: true
+
+# - name: Add jenkins to docker group
+#   command: usermod -aG docker jenkins && newgrp docker
+#   become: true

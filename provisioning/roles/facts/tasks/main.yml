@@ -1,0 +1,9 @@
+---
+- name: Get jenkins password
+  command: cat /var/lib/jenkins/secrets/initialAdminPassword
+  become: true
+  register: jenkins_passwd
+
+- name: Show jenkins password
+  debug: var=item
+  with_items: '{{ jenkins_passwd.stdout }}'
